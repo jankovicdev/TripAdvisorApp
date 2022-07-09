@@ -17,11 +17,11 @@ public class VolunteeringServiceImpl implements VolunteeringService {
 
     @Override
     public List<Volunteering> getRandomConservationAndEnvironment() {
-        return Collections.singletonList(volunteeringRepository.randomChildcare().getMappedResults().stream().findFirst().orElse(null));
+        return Collections.singletonList(volunteeringRepository.randomConservationAndEnvironment().getMappedResults().stream().findFirst().orElse(null));
     }
 
     @Override
     public List<Volunteering> getRandomChildcare() {
-        return Collections.singletonList(volunteeringRepository.randomConservationAndEnvironment().getMappedResults().stream().findFirst().orElse(null));
+        return Collections.singletonList(volunteeringRepository.randomChildcare().getMappedResults().stream().findFirst().orElse(null));
     }
 }
