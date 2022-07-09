@@ -3,14 +3,14 @@ package demo.tripadvisorapp.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("safari")
-public class Safari {
+@Document("volunteering")
+public class Volunteering {
 
     @Id
     private String id;
     private String title;
     private String description;
-    private String typeOfSafari;
+    private String typeOfVolunteering;
 
     public String getTitle() {
         return title;
@@ -20,7 +20,7 @@ public class Safari {
         return description;
     }
 
-    public String getTypeOfSafari() {
-        return typeOfSafari;
+    public String getTypeOfVolunteering() {
+        return typeOfVolunteering;
     }
 }
