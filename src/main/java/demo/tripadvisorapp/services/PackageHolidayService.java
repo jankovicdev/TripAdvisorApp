@@ -8,6 +8,7 @@ public interface PackageHolidayService {
 
 
     List<PackageHoliday> getRandomIndependentTours();
+
     List<PackageHoliday> getRandomEscortedTours();
 
 

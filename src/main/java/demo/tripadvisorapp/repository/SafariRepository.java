@@ -7,15 +7,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface SafariRepository extends MongoRepository<Safari, String> {
 
-
-    @Aggregation(pipeline = {"{'$match':{'typeOfSafari':'photographicSafari'}}",
-            "{$sample:{size:1}}"
-    })
+    @Aggregation(pipeline = {"{'$match':{'typeOfSafari':'photographicSafari'}}", "{$sample:{size:1}}"})
     AggregationResults<Safari> randomPhotographicSafari();
 
-    @Aggregation(pipeline = {"{'$match':{'typeOfSafari':'cyclingSafari'}}",
-            "{$sample:{size:1}}"
-    })
+    @Aggregation(pipeline = {"{'$match':{'typeOfSafari':'cyclingSafari'}}", "{$sample:{size:1}}"})
     AggregationResults<Safari> randomCyclingSafari();
 
 }

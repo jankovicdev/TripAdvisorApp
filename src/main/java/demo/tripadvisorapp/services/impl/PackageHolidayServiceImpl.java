@@ -15,7 +15,6 @@ public class PackageHolidayServiceImpl implements PackageHolidayService {
     @Autowired
     private PackageHolidayRepository packageHolidayRepository;
 
-
     @Override
     public List<PackageHoliday> getRandomIndependentTours() {
         return Collections.singletonList(packageHolidayRepository.randomIndependentTours().getMappedResults().stream().findFirst().orElse(null));

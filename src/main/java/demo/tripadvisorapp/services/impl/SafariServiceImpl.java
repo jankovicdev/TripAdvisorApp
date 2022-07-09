@@ -15,7 +15,6 @@ public class SafariServiceImpl implements SafariService {
     @Autowired
     private SafariRepository safariRepository;
 
-
     @Override
     public List<Safari> getRandomPhotographic() {
         return Collections.singletonList(safariRepository.randomPhotographicSafari().getMappedResults().stream().findFirst().orElse(null));
