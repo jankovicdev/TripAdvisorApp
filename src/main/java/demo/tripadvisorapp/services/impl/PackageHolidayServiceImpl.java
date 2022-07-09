@@ -17,9 +17,14 @@ public class PackageHolidayServiceImpl implements PackageHolidayService {
 
 
     @Override
-    public List<PackageHoliday> getRandomPackageHoliday() {
-        return Collections.singletonList(packageHolidayRepository.randomPackageHoliday().getMappedResults().stream().findFirst().orElse(null));
-
+    public List<PackageHoliday> getRandomIndependentTours() {
+        return Collections.singletonList(packageHolidayRepository.randomIndependentTours().getMappedResults().stream().findFirst().orElse(null));
     }
+
+    @Override
+    public List<PackageHoliday> getRandomEscortedTours() {
+        return Collections.singletonList(packageHolidayRepository.randomEscortedTours().getMappedResults().stream().findFirst().orElse(null));
+    }
+
 }
 

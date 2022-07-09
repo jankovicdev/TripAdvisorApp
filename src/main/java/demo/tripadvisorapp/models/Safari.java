@@ -1,21 +1,18 @@
 package demo.tripadvisorapp.models;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.lang.reflect.Array;
-import java.util.List;
+@Document("safari")
+public class Safari {
 
-@Document("packageholiday")
-public class PackageHoliday {
 
     @Id
     private String id;
     private String title;
     private String description;
-    private String whatToDo;
-    private String typeOfPackageHoliday;
-
+    private String typeOfSafari;
 
     public String getTitle() {
         return title;
@@ -25,11 +22,7 @@ public class PackageHoliday {
         return description;
     }
 
-    public String getWhatToDo() {
-        return whatToDo;
-    }
-
-    public String getTypeOfPackageHoliday() {
-        return typeOfPackageHoliday;
+    public String getTypeOfSafari() {
+        return typeOfSafari;
     }
 }
