@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface PackageHolidayService {
 
-    List<PackageHoliday> getRandomPackageHoliday();
+
+    List<PackageHoliday> getRandomIndependentTours();
+    List<PackageHoliday> getRandomEscortedTours();
+
 
 }

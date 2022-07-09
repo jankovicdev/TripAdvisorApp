@@ -8,6 +8,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface PackageHolidayRepository extends MongoRepository<PackageHoliday, String> {
 
-    @Aggregation(pipeline={"{$sample:{size:1}}"})
-    AggregationResults<PackageHoliday> randomPackageHoliday();
+    @Aggregation(pipeline = {"{'$match':{'typeOfPackageHoliday':'independentTours'}}",
+            "{$sample:{size:1}}"
+    })
+    AggregationResults<PackageHoliday> randomIndependentTours();
+
+    @Aggregation(pipeline = {"{'$match':{'typeOfPackageHoliday':'escortedTours'}}",
+            "{$sample:{size:1}}"
+    })
+    AggregationResults<PackageHoliday> randomEscortedTours();
 }
