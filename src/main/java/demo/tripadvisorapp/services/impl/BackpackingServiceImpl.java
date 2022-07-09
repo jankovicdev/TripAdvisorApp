@@ -15,7 +15,6 @@ public class BackpackingServiceImpl implements BackpackingService {
     @Autowired
     private BackpackingRepository backpackingRepository;
 
-
     @Override
     public List<Backpacking> getRandomLongDistanceHiking() {
         return Collections.singletonList(backpackingRepository.randomLongDistanceHiking().getMappedResults().stream().findFirst().orElse(null));

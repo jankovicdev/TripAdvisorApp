@@ -1,9 +1,6 @@
 package demo.tripadvisorapp.api;
 
-
-import demo.tripadvisorapp.models.PackageHoliday;
 import demo.tripadvisorapp.models.Safari;
-import demo.tripadvisorapp.services.PackageHolidayService;
 import demo.tripadvisorapp.services.SafariService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
