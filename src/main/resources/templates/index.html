@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+<body>
+
+<div class="header">
+    <h1>Hi, welcome to Trip Advisor</h1>
+    <p>We will find a trip that suit you.</p>
+</div>
+
+<div class="row">
+
+    <!--main divs-->
+    <div style="background-color: #4cc9f0" class="item a" id="adventureHolidays"><p>Adventure Holidays</p></div>
+    <div style="background-color: #4895ef" class="item b" id="backpacking"><p>Backpacking</p></div>
+    <div style="background-color: #4361ee" class="item c" id="cruiseHolidays"><p>Cruise Holidays</p></div>
+    <div style="background-color: #4361ee" class="item d" id="eventTravel"><p>Event Travel</p>
+    </div>
+    <div style="background-color: #3a0ca3" class="item e" id="packageHoliday"><p>Package Holiday</p></div>
+    <div style="background-color: #480ca8" class="item f" id="safari"><p>Safari</p></div>
+    <div style="background-color: #560bad" class="item g" id="skiingAndSnowboarding"><p>Skiing and Snowboarding</p>
+    </div>
+    <div style="background-color: #7209b7" class="item h" id="volunteering"><p>Volunteering</p></div>
+
+    <!--end on main divs-->
+
+    <!--sub divs this is hidden on page load but I can see them for about a second on page load and then dissaper-->
+
+    <div style="background-color: #4cc9f0" class="column" id="aH-summerCamps"><p>Summer camps</p></div>
+    <div style="background-color: #4895ef" class="column" id="aH-trekking"><p>Trekking</p></div>
+    <div style="background-color: #4361ee" class="column" id="bP-longDistanceHiking"><p>Long Distance Hiking</p></div>
+    <div style="background-color: #4361ee" class="column" id="bP-thruHiking"><p>Thru Hiking</p></div>
+    <div style="background-color: #3a0ca3" class="column" id="c-oceanCruising"><p>Ocean Cruising</p></div>
+    <div style="background-color: #480ca8" class="column" id="c-riverCruising"><p>River Cruising</p></div>
+    <div style="background-color: #560bad" class="column" id="e-recreationsEvent"><p>Recreations Events</p></div>
+    <div style="background-color: #7209b7" class="column" id="e-sportsEvents"><p>Sports events</p></div>
+    <div style="background-color: #4cc9f0" class="column" id="pH-escortedTours"><p>Escorted Tours</p></div>
+    <div style="background-color: #4895ef" class="column" id="pH-independentTours"><p>Independent Tours</p></div>
+    <div style="background-color: #4361ee" class="column" id="s-photographicSafari"><p>Photographic Safari</p></div>
+    <div style="background-color: #4895ef" class="column" id="s-cyclingSafari"><p>Cycling Safari</p></div>
+    <div style="background-color: #3a0ca3" class="column" id="sAs-backcountrySkiing"><p>Backcountry skiing</p></div>
+    <div style="background-color: #560bad" class="column" id="sAs-downhillSkiing"><p>Downhill skiing</p></div>
+    <div style="background-color: #4361ee" class="column" id="v-childcare"><p>Childcare</p></div>
+    <div style="background-color: #4895ef" class="column" id="v-conservationAndEnvironment"><p>Conservation And
+        Environment</p></div>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+
+</body>
+</html>
