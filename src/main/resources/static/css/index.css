@@ -8,7 +8,6 @@ body {
     display: grid;
     grid-template-columns: 180px 180px 180px 180px;
     grid-gap: 10px;
-    position: center;
 }
 
 .item {
