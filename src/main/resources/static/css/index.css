@@ -1,16 +1,26 @@
 body {
-    margin: 10px;
+    margin: 0;
+}
+.header {
+    padding: 60px;
     text-align: center;
-    width: 380px;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
 }
 
 .row {
     display: grid;
     grid-template-columns: 180px 180px 180px 180px;
     grid-gap: 10px;
+    position: absolute;
+    top: 60%;
+    left: 20%;
+
 }
 
 .item {
+    text-align: center;
     color: white;
     padding: 1.5em 0;
     font-size: 2em;
