@@ -1,0 +1,93 @@
+/*
+p {
+    font-family: calibri;
+    padding-left: 10px;
+}
+
+#backpacking {
+    background: rgba(9, 30, 51, 0.62);
+    width: 300px;
+    height: 400px;
+    float: left;
+}
+
+#packageHoliday {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+}
+
+#safari {
+    background: rgba(9, 30, 51, 0.62);
+    width: 300px;
+    height: 400px;
+    float: left;
+    display: none;
+
+}
+
+#bp-longDistanceHiking {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+    display: none;
+}
+
+#bp-thruHiking {
+    background: rgba(9, 30, 51, 0.62);
+    width: 300px;
+    height: 400px;
+    float: left;
+    display: none;
+
+}
+
+#ph-escortedTours {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+    display: none;
+}
+#ph-independentTours {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+    display: none;
+}
+#s-photographicSafari {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+    display: none;
+}
+#s-cyclingSafari {
+    width: 300px;
+    height: 400px;
+    background: #8f9b82;
+    overflow: hidden;
+    display: none;
+}*/
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    /*
+    display: table;
+    */
+    clear: both;
+}
