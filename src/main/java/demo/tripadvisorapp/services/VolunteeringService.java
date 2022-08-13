@@ -1,13 +1,14 @@
 package demo.tripadvisorapp.services;
 
+import demo.tripadvisorapp.models.PackageHoliday;
 import demo.tripadvisorapp.models.Volunteering;
 
 import java.util.List;
 
 public interface VolunteeringService {
 
-    List<Volunteering> getRandomConservationAndEnvironment();
+    Volunteering findRandomVolunteering(String type);
 
-    List<Volunteering> getRandomChildcare();
+    long countVolunteering(String type);
 
 }

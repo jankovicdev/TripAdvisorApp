@@ -7,10 +7,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CruiseHolidaysRepository extends MongoRepository<CruiseHolidays, String> {
 
-    @Aggregation(pipeline = {"{'$match':{'typeOfCruiseHolidays':'oceanCruising'}}", "{$sample:{size:1}}"})
-    AggregationResults<CruiseHolidays> randomOceanCruising();
-
-    @Aggregation(pipeline = {"{'$match':{'typeOfCruiseHolidays':'riverCruising'}}", "{$sample:{size:1}}"})
-    AggregationResults<CruiseHolidays> randomRiverCruising();
-
 }

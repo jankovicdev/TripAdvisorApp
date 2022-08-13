@@ -1,5 +1,6 @@
 package demo.tripadvisorapp.services;
 
+import demo.tripadvisorapp.models.EventTravel;
 import demo.tripadvisorapp.models.PackageHoliday;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 public interface PackageHolidayService {
 
 
-    List<PackageHoliday> getRandomIndependentTours();
+    PackageHoliday findRandomPackageHoliday(String type);
 
-    List<PackageHoliday> getRandomEscortedTours();
+    long countPackageHoliday(String type);
 
 
 }

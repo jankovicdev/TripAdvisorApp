@@ -1,27 +1,51 @@
 package demo.tripadvisorapp.services.impl;
 
+import demo.tripadvisorapp.models.SkiingAndSnowBoarding;
 import demo.tripadvisorapp.models.Volunteering;
 import demo.tripadvisorapp.repository.VolunteeringRepository;
 import demo.tripadvisorapp.services.VolunteeringService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 @Service
 public class VolunteeringServiceImpl implements VolunteeringService {
 
-    @Autowired
-    private VolunteeringRepository volunteeringRepository;
+    private static final Queue<Volunteering> elementsToReturn = new LinkedList<>();
 
-    @Override
-    public List<Volunteering> getRandomConservationAndEnvironment() {
-        return Collections.singletonList(volunteeringRepository.randomConservationAndEnvironment().getMappedResults().stream().findFirst().orElse(null));
+    @Autowired
+    private final MongoTemplate mongoTemplate;
+
+    public VolunteeringServiceImpl(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
     }
 
     @Override
-    public List<Volunteering> getRandomChildcare() {
-        return Collections.singletonList(volunteeringRepository.randomChildcare().getMappedResults().stream().findFirst().orElse(null));
+    public Volunteering findRandomVolunteering(String type) {
+        if (elementsToReturn.size() == 0) {
+            Query query = new Query();
+            query.addCriteria(Criteria.where("typeOfVolunteering").is(type));
+            List<Volunteering> newData = mongoTemplate.find(query, Volunteering.class);
+            Collections.shuffle(newData);
+            elementsToReturn.addAll(newData);
+        }
+        return elementsToReturn.poll();
+    }
+
+    @Override
+    public long countVolunteering(String type) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("typeOfVolunteering").is(type));
+        long count = mongoTemplate.count(query, Volunteering.class);
+        System.out.println(count);
+
+        return count;
     }
 }

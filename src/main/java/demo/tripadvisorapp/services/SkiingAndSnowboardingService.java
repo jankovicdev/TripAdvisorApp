@@ -1,13 +1,14 @@
 package demo.tripadvisorapp.services;
 
+import demo.tripadvisorapp.models.PackageHoliday;
 import demo.tripadvisorapp.models.SkiingAndSnowBoarding;
 
 import java.util.List;
 
 public interface SkiingAndSnowboardingService {
 
-    List<SkiingAndSnowBoarding> getRandomBackcountrySkiing();
+    SkiingAndSnowBoarding findRandomSkiingAndSnowboarding(String type);
 
-    List<SkiingAndSnowBoarding> getRandomDownhillSkiing();
+    long countSkiingAndSnowboarding(String type);
 
 }
