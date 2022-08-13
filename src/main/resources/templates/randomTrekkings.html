@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/randomSummerCamps.css}"/>
+
+</head>
+<body>
+<tr th:each="randomTrekkings:${randomTrekkings}">
+    <div class="title">
+        <h1 th:text="${randomTrekkings.title}"></h1>
+        <h1>we think this trip best suit you.</h1>
+        <div class="description">
+            <td th:text="${randomTrekkings.description}"></td>
+        </div>
+        <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomTrekking'">Randomize
+            again!
+        </button>
+    </div>
+</tr>
+
+
+</body>
+</html>
