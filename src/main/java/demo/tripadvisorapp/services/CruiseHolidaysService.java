@@ -1,13 +1,13 @@
 package demo.tripadvisorapp.services;
 
+import demo.tripadvisorapp.models.Backpacking;
 import demo.tripadvisorapp.models.CruiseHolidays;
 
-import java.util.List;
 
 public interface CruiseHolidaysService {
 
-    List<CruiseHolidays> getRandomOceanCruising();
+    CruiseHolidays findRandomCruiseHolidays(String type);
 
-    List<CruiseHolidays> getRandomRiverCruising();
+    long countCruiseHoliday(String type);
 
 }
