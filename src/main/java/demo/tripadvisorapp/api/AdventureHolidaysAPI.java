@@ -41,6 +41,7 @@ public class AdventureHolidaysAPI {
             System.out.println("in if");
             return "randomTrekkings";
         } else {
+            countTrekkings.set(0);
             return "noMoreDoc";
 
         }
