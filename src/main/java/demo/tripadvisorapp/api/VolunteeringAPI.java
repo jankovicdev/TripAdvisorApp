@@ -10,24 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/volunteering")
 public class VolunteeringAPI {
 
-    int countChildcare = 0;
-    int countConservationAndEnvironment = 0;
+
+    AtomicInteger countChildcare = new AtomicInteger();
+    AtomicInteger countConservationAndEnvironment = new AtomicInteger();
 
     @Autowired
     private VolunteeringService volunteeringService;
 
     @GetMapping("/getRandomChildcare")
     public String getRandomChildcare(Model model) {
-        countChildcare++;
-        if (countChildcare <= volunteeringService.countVolunteering("childcare")) {
+        countChildcare.incrementAndGet();
+        if (getCuntChildcare() <= volunteeringService.countVolunteering("childcare")) {
             model.addAttribute("randomChildcare", volunteeringService.findRandomVolunteering("childcare"));
             System.out.println("in if");
         } else {
+            countChildcare.set(0);
             return "noMoreDoc";
         }
         return "randomChildcare";
@@ -35,13 +38,22 @@ public class VolunteeringAPI {
 
     @GetMapping("/getRandomConservationAndEnvironment")
     public String getRandomConservationAndEnvironment(Model model) {
-        countConservationAndEnvironment++;
-        if (countConservationAndEnvironment <= volunteeringService.countVolunteering("conservationAndEnvironment")) {
+        countConservationAndEnvironment.incrementAndGet();
+        if (getCountConservationAndEnvironment() <= volunteeringService.countVolunteering("conservationAndEnvironment")) {
             model.addAttribute("randomConservationAndEnvironment", volunteeringService.findRandomVolunteering("conservationAndEnvironment"));
             System.out.println("in if");
         } else {
+            countConservationAndEnvironment.set(0);
             return "noMoreDoc";
         }
         return "randomConservationAndEnvironment";
+    }
+
+    public int getCuntChildcare() {
+        return this.countChildcare.get();
+    }
+
+    public int getCountConservationAndEnvironment() {
+        return this.countConservationAndEnvironment.get();
     }
 }
