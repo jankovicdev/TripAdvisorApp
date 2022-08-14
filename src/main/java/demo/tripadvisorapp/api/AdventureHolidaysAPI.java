@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 @Controller
 @RequestMapping("/adventureHolidays")
@@ -15,31 +17,39 @@ public class AdventureHolidaysAPI {
     @Autowired
     private AdventureHolidaysService adventureHolidaysService;
 
-    int countAPICallsSummerCamps = 0;
-    int countAPICallsTrekking = 0;
+    AtomicInteger countSummerCamps = new AtomicInteger();
+    AtomicInteger countTrekkings = new AtomicInteger();
 
     @GetMapping("/getRandomSummerCamps")
     public String getRandomSummerCamps(Model model) {
-        countAPICallsSummerCamps++;
-        if (countAPICallsSummerCamps <= adventureHolidaysService.countAdventureHolidays("summerCamps")) {
+        countSummerCamps.incrementAndGet();
+        if (getCountSummerCamps() <= adventureHolidaysService.countAdventureHolidays("summerCamps")) {
             model.addAttribute("randomSummerCamps", adventureHolidaysService.findRandomAdventureHolidays("summerCamps"));
             System.out.println("in if");
+            return "randomSummerCamps";
         } else {
             return "noMoreDoc";
         }
-        return "randomSummerCamps";
     }
-
 
     @GetMapping("/getRandomTrekking")
     public String getRandomTrekking(Model model) {
-        countAPICallsTrekking++;
-        if (countAPICallsTrekking <= adventureHolidaysService.countAdventureHolidays("trekking")) {
+        countTrekkings.incrementAndGet();
+        if (getCountTrekkings() <= adventureHolidaysService.countAdventureHolidays("trekking")) {
             model.addAttribute("randomTrekkings", adventureHolidaysService.findRandomAdventureHolidays("trekking"));
             System.out.println("in if");
+            return "randomTrekkings";
         } else {
             return "noMoreDoc";
+
         }
-        return "randomTrekkings";
+    }
+
+    public int getCountSummerCamps() {
+        return this.countSummerCamps.get();
+    }
+
+    public int getCountTrekkings() {
+        return this.countTrekkings.get();
     }
 }
