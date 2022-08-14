@@ -28,6 +28,7 @@ public class AdventureHolidaysAPI {
             System.out.println("in if");
             return "randomSummerCamps";
         } else {
+            countSummerCamps.set(0);
             return "noMoreDoc";
         }
     }
