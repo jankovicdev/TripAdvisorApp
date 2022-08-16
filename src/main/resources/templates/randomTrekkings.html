@@ -10,8 +10,9 @@
 <body>
 <tr th:each="randomTrekkings:${randomTrekkings}">
     <div class="title">
+        <h1>We think this trip best suit you.</h1>
         <h1 th:text="${randomTrekkings.title}"></h1>
-        <h1>we think this trip best suit you.</h1>
+        <h1 th:text="${randomTrekkings.state}"></h1>
         <div class="description">
             <td th:text="${randomTrekkings.description}"></td>
         </div>
@@ -19,6 +20,9 @@
             again!
         </button>
     </div>
+    <h1>View Photo</h1>
+    Title: <span th:text="${title}">name</span>
+    <img alt="sample" th:src="*{'data:image/png;base64,'+image}" />
 </tr>
 
 
