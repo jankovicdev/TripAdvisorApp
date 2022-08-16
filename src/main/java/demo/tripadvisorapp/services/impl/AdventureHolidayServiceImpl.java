@@ -4,12 +4,14 @@ import demo.tripadvisorapp.models.AdventureHolidays;
 import demo.tripadvisorapp.repository.AdventureHolidaysRepository;
 import demo.tripadvisorapp.services.AdventureHolidaysService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -22,7 +24,16 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
     private static final Queue<AdventureHolidays> elementsToReturn = new LinkedList<>();
 
     @Autowired
+    AdventureHolidaysRepository adventureHolidaysRepository;
+
+    @Autowired
     private final MongoTemplate mongoTemplate;
+
+    @Autowired
+    private GridFsTemplate template;
+
+    @Autowired
+    private GridFsOperations operations;
 
     public AdventureHolidayServiceImpl(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
@@ -50,4 +61,6 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
         return count;
 
     }
+
+
 }

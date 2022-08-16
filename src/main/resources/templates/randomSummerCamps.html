@@ -10,14 +10,21 @@
 <body>
 <tr th:each="randomSummerCamps:${randomSummerCamps}">
     <div class="title">
+        <h1>We think this trip best suit you.</h1>
         <h1 th:text="${randomSummerCamps.title}"></h1>
-        <h1>we think this trip best suit you.</h1>
+        <h1 th:text="${randomSummerCamps.state}"></h1>
+        <img alt="sample" th:src="*{'data:image/png;base64,'+image}"  src=""/>
         <div class="description">
             <td th:text="${randomSummerCamps.description}"></td>
         </div>
         <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
             again!
         </button>
+
+        <form method="POST" action="/photos/add" enctype="multipart/form-data">
+            Image:<input type="file" name="image" accept="image/*" />
+            <input type="submit" value="Upload" />
+        </form>
     </div>
 </tr>
 

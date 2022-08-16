@@ -1,8 +1,6 @@
 package demo.tripadvisorapp.services.impl;
 
-import demo.tripadvisorapp.models.EventTravel;
 import demo.tripadvisorapp.models.PackageHoliday;
-import demo.tripadvisorapp.repository.PackageHolidayRepository;
 import demo.tripadvisorapp.services.PackageHolidayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

@@ -10,7 +10,9 @@ public class AdventureHolidays {
     private String id;
     private String title;
     private String description;
+    private String state;
     private String typeOfAdventureHolidays;
+
 
     public String getTitle() {
         return title;
@@ -19,6 +21,11 @@ public class AdventureHolidays {
     public String getDescription() {
         return description;
     }
+
+    public String getState() {
+        return state;
+    }
+
 
     public String getTypeOfAdventureHolidays() {
         return typeOfAdventureHolidays;

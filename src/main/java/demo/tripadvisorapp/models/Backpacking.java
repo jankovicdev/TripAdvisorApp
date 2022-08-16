@@ -10,10 +10,15 @@ public class Backpacking {
     private String id;
     private String title;
     private String description;
+    private String state;
     private String typeOfBackpacking;
 
     public String getTitle() {
         return title;
+    }
+
+    public String getState() {
+        return state;
     }
 
     public String getDescription() {
