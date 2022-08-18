@@ -16,16 +16,11 @@
         <div class="description">
             <td th:text="${randomSummerCamps.description}"></td>
         </div>
+        <img alt="sample" th:src="*{'data:image/png;base64,'+randomImage}" src=""/>
         <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
             again!
         </button>
     </div>
 </tr>
-<tr th:each="randomImage:${randomImage}">
-    <div class="title">
-        <img alt="sample" th:src="*{'data:image/png;base64,'+randomImage}" src=""/>    </div>
-</tr>
-
-
 </body>
 </html>
