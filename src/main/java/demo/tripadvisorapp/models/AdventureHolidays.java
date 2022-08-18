@@ -1,5 +1,6 @@
 package demo.tripadvisorapp.models;
 
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +13,15 @@ public class AdventureHolidays {
     private String description;
     private String state;
     private String typeOfAdventureHolidays;
+    private Binary image;
 
+    public Binary getImage() {
+        return image;
+    }
+
+    public void setImage(Binary image) {
+        this.image = image;
+    }
 
     public String getTitle() {
         return title;

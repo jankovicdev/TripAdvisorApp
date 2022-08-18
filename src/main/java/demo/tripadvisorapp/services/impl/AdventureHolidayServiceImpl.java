@@ -62,5 +62,9 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
 
     }
 
+    public AdventureHolidays getPhoto() {
+        return adventureHolidaysRepository.findAll().stream().findFirst().orElse(null);
+    }
+
 
 }

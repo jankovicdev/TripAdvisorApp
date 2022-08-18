@@ -11,6 +11,6 @@ public interface AdventureHolidaysService {
 
     long countAdventureHolidays(String type);
 
-
+    public AdventureHolidays getPhoto();
 
 }
