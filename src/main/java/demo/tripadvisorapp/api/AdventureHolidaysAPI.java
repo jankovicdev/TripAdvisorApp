@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Base64;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,7 +30,7 @@ public class AdventureHolidaysAPI {
             AdventureHolidays photo = adventureHolidaysService.getPhoto();
             model.addAttribute("randomSummerCamps", adventureHolidaysService.findRandomAdventureHolidays("summerCamps"));
             System.out.println("in if");
-            model.addAttribute("randomImage", Base64.getEncoder().encodeToString(photo.getImage().getData()));
+            model.addAttribute("randomImageSummerCamp", Base64.getEncoder().encodeToString(photo.getImage().getData()));
             return "randomSummerCamps";
         } else {
             countSummerCamps.set(0);
@@ -40,14 +42,22 @@ public class AdventureHolidaysAPI {
     public String getRandomTrekking(Model model) {
         countTrekkings.incrementAndGet();
         if (getCountTrekkings() <= adventureHolidaysService.countAdventureHolidays("trekking")) {
+            AdventureHolidays photo = adventureHolidaysService.getPhoto();
             model.addAttribute("randomTrekkings", adventureHolidaysService.findRandomAdventureHolidays("trekking"));
             System.out.println("in if");
+            model.addAttribute("randomImageTrekkings", Base64.getEncoder().encodeToString(photo.getImage().getData()));
             return "randomTrekkings";
         } else {
             countTrekkings.set(0);
             return "noMoreDoc";
 
         }
+    }
+
+    @PostMapping("/photos/add")
+    public String addPhoto(@RequestParam("image") MultipartFile image)
+            throws IOException {
+        return adventureHolidaysService.addPhoto(image);
     }
 
     public int getCountSummerCamps() {

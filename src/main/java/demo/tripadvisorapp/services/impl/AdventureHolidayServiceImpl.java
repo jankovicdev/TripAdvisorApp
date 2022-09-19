@@ -3,6 +3,8 @@ package demo.tripadvisorapp.services.impl;
 import demo.tripadvisorapp.models.AdventureHolidays;
 import demo.tripadvisorapp.repository.AdventureHolidaysRepository;
 import demo.tripadvisorapp.services.AdventureHolidaysService;
+import org.bson.BsonBinarySubType;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -60,6 +64,15 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
 
         return count;
 
+    }
+
+    @Override
+    public String addPhoto(MultipartFile file) throws IOException {
+        AdventureHolidays photo = new AdventureHolidays();
+        photo.setImage(
+                new Binary(BsonBinarySubType.BINARY, file.getBytes()));
+        photo = adventureHolidaysRepository.insert(photo);
+        return photo.getId();
     }
 
     public AdventureHolidays getPhoto() {

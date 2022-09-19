@@ -13,4 +13,6 @@ public interface AdventureHolidaysService {
 
     public AdventureHolidays getPhoto();
 
+    public String addPhoto(MultipartFile file) throws IOException;
+
 }

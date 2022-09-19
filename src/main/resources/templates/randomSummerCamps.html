@@ -16,8 +16,7 @@
         <div class="description">
             <td th:text="${randomSummerCamps.description}"></td>
         </div>
-        <img th:if="${randomSummerCamps.image != null}" alt="sample" th:src="*{'data:image/png;base64,'+randomImage}"/>
-        <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
+        <img th:if="${randomSummerCamps.image != null}" alt="sample" th:src="*{'data:image/png;base64,'+randomImageSummerCamp}" src=""/>        <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
             again!
         </button>
     </div>
