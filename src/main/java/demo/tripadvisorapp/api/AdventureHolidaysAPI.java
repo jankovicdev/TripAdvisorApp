@@ -1,10 +1,15 @@
 package demo.tripadvisorapp.api;
 
+import demo.tripadvisorapp.models.AdventureHolidays;
 import demo.tripadvisorapp.services.AdventureHolidaysService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -43,6 +48,12 @@ public class AdventureHolidaysAPI {
             return "noMoreDoc";
 
         }
+    }
+
+    @PostMapping("/photos/add")
+    public String addPhoto(@RequestParam("file") MultipartFile file)
+            throws IOException {
+        return adventureHolidaysService.saveImage(file);
     }
 
     public int getCountSummerCamps() {

@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -62,5 +65,20 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
 
     }
 
+    @Override
+    public String saveImage(MultipartFile file) {
+        AdventureHolidays adventureHolidays = new AdventureHolidays();
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        if (fileName.contains("..")) {
+            System.out.println("not a a valid file");
+        }
+        try {
+            adventureHolidays.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        adventureHolidaysRepository.save(adventureHolidays);
+        return fileName;
+    }
 }
