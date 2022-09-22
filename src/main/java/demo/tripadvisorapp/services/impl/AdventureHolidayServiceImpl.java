@@ -3,8 +3,6 @@ package demo.tripadvisorapp.services.impl;
 import demo.tripadvisorapp.models.AdventureHolidays;
 import demo.tripadvisorapp.repository.AdventureHolidaysRepository;
 import demo.tripadvisorapp.services.AdventureHolidaysService;
-import org.bson.BsonBinarySubType;
-import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,6 +13,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.*;
@@ -67,17 +66,19 @@ public class AdventureHolidayServiceImpl implements AdventureHolidaysService {
     }
 
     @Override
-    public String addPhoto(MultipartFile file) throws IOException {
-        AdventureHolidays photo = new AdventureHolidays();
-        photo.setImage(
-                new Binary(BsonBinarySubType.BINARY, file.getBytes()));
-        photo = adventureHolidaysRepository.insert(photo);
-        return photo.getId();
+    public String saveImage(MultipartFile file) {
+        AdventureHolidays adventureHolidays = new AdventureHolidays();
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        if (fileName.contains("..")) {
+            System.out.println("not a a valid file");
+        }
+        try {
+            adventureHolidays.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        adventureHolidaysRepository.save(adventureHolidays);
+        return fileName;
     }
-
-    public AdventureHolidays getPhoto() {
-        return adventureHolidaysRepository.findAll().stream().findFirst().orElse(null);
-    }
-
-
 }

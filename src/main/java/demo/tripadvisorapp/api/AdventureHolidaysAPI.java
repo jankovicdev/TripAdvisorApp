@@ -27,10 +27,8 @@ public class AdventureHolidaysAPI {
     public String getRandomSummerCamps(Model model) {
         countSummerCamps.incrementAndGet();
         if (getCountSummerCamps() <= adventureHolidaysService.countAdventureHolidays("summerCamps")) {
-            AdventureHolidays photo = adventureHolidaysService.getPhoto();
             model.addAttribute("randomSummerCamps", adventureHolidaysService.findRandomAdventureHolidays("summerCamps"));
             System.out.println("in if");
-            model.addAttribute("randomImageSummerCamp", Base64.getEncoder().encodeToString(photo.getImage().getData()));
             return "randomSummerCamps";
         } else {
             countSummerCamps.set(0);
@@ -42,10 +40,8 @@ public class AdventureHolidaysAPI {
     public String getRandomTrekking(Model model) {
         countTrekkings.incrementAndGet();
         if (getCountTrekkings() <= adventureHolidaysService.countAdventureHolidays("trekking")) {
-            AdventureHolidays photo = adventureHolidaysService.getPhoto();
             model.addAttribute("randomTrekkings", adventureHolidaysService.findRandomAdventureHolidays("trekking"));
             System.out.println("in if");
-            model.addAttribute("randomImageTrekkings", Base64.getEncoder().encodeToString(photo.getImage().getData()));
             return "randomTrekkings";
         } else {
             countTrekkings.set(0);
@@ -55,9 +51,9 @@ public class AdventureHolidaysAPI {
     }
 
     @PostMapping("/photos/add")
-    public String addPhoto(@RequestParam("image") MultipartFile image)
+    public String addPhoto(@RequestParam("file") MultipartFile file)
             throws IOException {
-        return adventureHolidaysService.addPhoto(image);
+        return adventureHolidaysService.saveImage(file);
     }
 
     public int getCountSummerCamps() {

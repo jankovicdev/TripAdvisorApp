@@ -13,7 +13,7 @@ public class AdventureHolidays {
     private String description;
     private String state;
     private String typeOfAdventureHolidays;
-    private Binary image;
+    private String image;
 
     public String getId() {
         return id;
@@ -23,11 +23,11 @@ public class AdventureHolidays {
         this.id = id;
     }
 
-    public Binary getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Binary image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
