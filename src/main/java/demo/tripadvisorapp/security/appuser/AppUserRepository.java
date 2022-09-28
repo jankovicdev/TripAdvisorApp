@@ -6,10 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@Transactional(readOnly = true)
+
 @Repository
-public interface AppUserRepository extends MongoRepository<AppUser, Long> {
+@Transactional(readOnly = true)
+public interface AppUserRepository extends MongoRepository<AppUser, String> {
 
     Optional<AppUser> findByEmail(String email);
+
+    @Transactional
+    int enableAppUser(String email);
 
 }

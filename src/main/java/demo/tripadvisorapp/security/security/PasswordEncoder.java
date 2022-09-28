@@ -1,4 +1,4 @@
-package demo.tripadvisorapp.security;
+package demo.tripadvisorapp.security.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
