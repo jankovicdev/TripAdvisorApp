@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" th:href="@{/css/index.css}"/>
+  <link rel="stylesheet" th:href="@{/css/tripAdvisorHomePage.css}"/>
   <title>asf</title>
 </head>
 <body>
@@ -9,6 +9,22 @@
   <h1>Hi, welcome to Trip Advisor</h1>
   <p>We will find a trip that suit you.</p>
 </div>
+
+<button id="login" class="float-left submit-button">Log in</button>
+
+<script type="text/javascript">
+  document.getElementById("login").onclick = function () {
+    location.href = "http://localhost:8080/api/auth/loginForm";
+  };
+</script>
+
+<button id="register" class="float-left submit-button">Sign up</button>
+
+<script type="text/javascript">
+  document.getElementById("register").onclick = function () {
+    location.href = "http://localhost:8080/api/auth/registerForm";
+  };
+</script>
 
 <div class="row">
 

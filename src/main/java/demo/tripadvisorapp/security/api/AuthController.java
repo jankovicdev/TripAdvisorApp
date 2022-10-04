@@ -10,6 +10,8 @@ import demo.tripadvisorapp.security.repository.RefreshTokenRepository;
 import demo.tripadvisorapp.security.repository.UserRepository;
 import demo.tripadvisorapp.security.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,9 +23,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.File;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/auth")
@@ -41,6 +45,7 @@ public class AuthController {
     @Autowired
     UserService userService;
 
+
     @PostMapping("/login")
     @Transactional
     public ResponseEntity<?> login(@Valid @ModelAttribute("login") LoginDTO dto, Model model) {
@@ -54,46 +59,49 @@ public class AuthController {
 
         model.addAttribute("login", dto);
 
-        String accessToken = jwtHelper.generateAccessToken(user);
-        String refreshTokenString = jwtHelper.generateRefreshToken(user, refreshToken);
-
-        return ResponseEntity.ok(new TokenDTO(user.getId(), accessToken, refreshTokenString));
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/api/users/tripAdvisorHomePage");
+        return new ResponseEntity<String>(headers, HttpStatus.FOUND);
 
     }
 
     @PostMapping("signup")
     @Transactional
-    public ResponseEntity<?> signup(@Valid @ModelAttribute("user") SignupDTO signupDTO, Model model) {
+    public ResponseEntity<?> signup(@Valid @ModelAttribute("user") SignupDTO signupDTO, Model model) throws Exception {
         User user = new User(signupDTO.getUsername(), signupDTO.getEmail(), passwordEncoder.encode(signupDTO.getPassword()));
         model.addAttribute("user", signupDTO);
+
+        Optional<User> usernameEntry = userRepository.findByUsername(user.getUsername());
+        Optional<User> emailEntry = userRepository.findByEmail(user.getEmail());
+
+        if (usernameEntry.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists!");
+        }
+        if (emailEntry.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists!");
+        }
         userRepository.save(user);
+        System.out.println("New user submission!");
+
 
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setOwner(user);
         refreshTokenRepository.save(refreshToken);
 
 
-        String accessToken = jwtHelper.generateAccessToken(user);
-        String refreshTokenString = jwtHelper.generateRefreshToken(user, refreshToken);
-
-
-        return ResponseEntity.ok(new TokenDTO(user.getId(), accessToken, refreshTokenString));
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/api/auth/loginAndRegisterForm");
+        return new ResponseEntity<String>(headers, HttpStatus.FOUND);
     }
 
-    @GetMapping("/registerForm")
-    public String showRegistrationForm(Model model) {
-        // create model object to store form data
-        SignupDTO user = new SignupDTO();
-        model.addAttribute("user", user);
-        return "signup";
-    }
-
-    @GetMapping("/loginForm")
+    @GetMapping("/loginAndRegisterForm")
     public String showLoginForm(Model model) {
         // create model object to store form data
         LoginDTO loginDTO = new LoginDTO();
+        SignupDTO signupDTO = new SignupDTO();
         model.addAttribute("login", loginDTO);
-        return "login";
+        model.addAttribute("user", signupDTO);
+        return "loginAndRegisterForm";
     }
 
     @PostMapping("logout")
