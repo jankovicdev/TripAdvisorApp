@@ -1,4 +1,4 @@
-package demo.tripadvisorapp.security.dto;
+package demo.tripadvisorapp.login.payload.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class SignupDTO {
+public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 30)
     private String username;

@@ -1,4 +1,4 @@
-package demo.tripadvisorapp.security.dto;
+package demo.tripadvisorapp.login.payload.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-public class LoginDTO {
+public class LoginRequest {
     @NotBlank
     private String username;
     @NotBlank
