@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
@@ -51,9 +52,11 @@ public class AuthController {
 
         model.addAttribute("login", loginRequest);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/api/users/tripAdvisorHomePage");
-        return new ResponseEntity<String>(headers, HttpStatus.FOUND);
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .location(URI.create("/api/users/tripAdvisorHomePage"))
+                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                .build();
 
         /*return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(new UserInfoResponse(user.getId(),
@@ -81,17 +84,20 @@ public class AuthController {
         model.addAttribute("signup", signupRequest);
         userRepository.save(user);
 
-
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-
-
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .location(URI.create("/api/auth/loginAndRegisterForm"))
+                .build();
     }
 
     @PostMapping("/signout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtHelper.getCleanJwtCookie();
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
-                .body(new MessageResponse("You've been signed out!"));
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .location(URI.create("/api/auth/loginAndRegisterForm"))
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .build();
     }
 
     @GetMapping("/loginAndRegisterForm")
