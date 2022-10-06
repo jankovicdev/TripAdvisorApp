@@ -1,14 +1,12 @@
-package demo.tripadvisorapp.login.api;
+package demo.tripadvisorapp.registrationAndLogin.api;
 
-import demo.tripadvisorapp.login.payload.request.LoginRequest;
-import demo.tripadvisorapp.login.payload.request.SignupRequest;
-import demo.tripadvisorapp.login.security.jwt.JwtUtils;
-import demo.tripadvisorapp.login.model.User;
-import demo.tripadvisorapp.login.payload.response.MessageResponse;
-import demo.tripadvisorapp.login.payload.response.UserInfoResponse;
-import demo.tripadvisorapp.login.repository.UserRepository;
-import demo.tripadvisorapp.login.security.services.UserDetailsImpl;
-import lombok.extern.slf4j.Slf4j;
+import demo.tripadvisorapp.registrationAndLogin.payload.request.LoginRequest;
+import demo.tripadvisorapp.registrationAndLogin.payload.request.SignupRequest;
+import demo.tripadvisorapp.registrationAndLogin.security.jwt.JwtUtils;
+import demo.tripadvisorapp.registrationAndLogin.model.User;
+import demo.tripadvisorapp.registrationAndLogin.payload.response.MessageResponse;
+import demo.tripadvisorapp.registrationAndLogin.repository.UserRepository;
+import demo.tripadvisorapp.registrationAndLogin.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

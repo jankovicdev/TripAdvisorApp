@@ -1,7 +1,7 @@
-package demo.tripadvisorapp.login.api;
+package demo.tripadvisorapp.registrationAndLogin.api;
 
-import demo.tripadvisorapp.login.model.User;
-import demo.tripadvisorapp.login.repository.UserRepository;
+import demo.tripadvisorapp.registrationAndLogin.model.User;
+import demo.tripadvisorapp.registrationAndLogin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

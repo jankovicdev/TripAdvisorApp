@@ -1,10 +1,10 @@
-package demo.tripadvisorapp.login.security.services;
+package demo.tripadvisorapp.registrationAndLogin.security.services;
 
 
 import java.util.Collection;
 import java.util.Objects;
 
-import demo.tripadvisorapp.login.model.User;
+import demo.tripadvisorapp.registrationAndLogin.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

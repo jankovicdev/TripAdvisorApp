@@ -1,11 +1,11 @@
-package demo.tripadvisorapp.login.security.jwt;
+package demo.tripadvisorapp.registrationAndLogin.security.jwt;
 
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import demo.tripadvisorapp.login.security.services.UserDetailsImpl;
+import demo.tripadvisorapp.registrationAndLogin.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

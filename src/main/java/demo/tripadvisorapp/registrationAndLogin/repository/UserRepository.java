@@ -1,6 +1,6 @@
-package demo.tripadvisorapp.login.repository;
+package demo.tripadvisorapp.registrationAndLogin.repository;
 
-import demo.tripadvisorapp.login.model.User;
+import demo.tripadvisorapp.registrationAndLogin.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

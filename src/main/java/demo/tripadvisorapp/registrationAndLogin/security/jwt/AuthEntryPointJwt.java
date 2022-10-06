@@ -1,7 +1,6 @@
-package demo.tripadvisorapp.login.security.jwt;
+package demo.tripadvisorapp.registrationAndLogin.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

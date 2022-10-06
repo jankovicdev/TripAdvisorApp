@@ -1,4 +1,4 @@
-package demo.tripadvisorapp.login.payload.response;
+package demo.tripadvisorapp.registrationAndLogin.payload.response;
 
 public class UserInfoResponse {
     private String id;

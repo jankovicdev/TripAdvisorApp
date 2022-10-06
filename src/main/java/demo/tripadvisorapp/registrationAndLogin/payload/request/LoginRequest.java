@@ -1,4 +1,4 @@
-package demo.tripadvisorapp.login.payload.request;
+package demo.tripadvisorapp.registrationAndLogin.payload.request;
 
 import lombok.Getter;
 import lombok.Setter;

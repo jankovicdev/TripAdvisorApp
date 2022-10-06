@@ -1,7 +1,7 @@
-package demo.tripadvisorapp.login.security.services;
+package demo.tripadvisorapp.registrationAndLogin.security.services;
 
-import demo.tripadvisorapp.login.model.User;
-import demo.tripadvisorapp.login.repository.UserRepository;
+import demo.tripadvisorapp.registrationAndLogin.model.User;
+import demo.tripadvisorapp.registrationAndLogin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

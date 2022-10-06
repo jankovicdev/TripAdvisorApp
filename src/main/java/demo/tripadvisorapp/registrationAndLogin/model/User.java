@@ -1,7 +1,6 @@
-package demo.tripadvisorapp.login.model;
+package demo.tripadvisorapp.registrationAndLogin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
