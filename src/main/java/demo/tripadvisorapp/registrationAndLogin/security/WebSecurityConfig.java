@@ -80,11 +80,9 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/users/**").authenticated()
+                .antMatchers("/api/user/**").authenticated()
                 .antMatchers(h2ConsolePath + "/**").permitAll().and()
                 .formLogin().loginPage("/api/auth/loginAndRegisterForm")
-                .successForwardUrl("/api/users/tripAdvisorHomePage").and()
-                .logout().logoutUrl("/api/auth/logout").logoutSuccessUrl("/api/auth/loginAndRegisterForm")
                 .permitAll();
 
 
