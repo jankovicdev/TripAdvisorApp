@@ -8,26 +8,37 @@
 
 </head>
 <body>
-<tr th:each="randomSummerCamps:${randomSummerCamps}">
-    <div class="title">
-        <h1>We think this trip best suit you.</h1>
-        <h1 th:text="${randomSummerCamps.title}"></h1>
-        <h1 th:text="${randomSummerCamps.state}"></h1>
-        <img alt="sample" th:src="*{'data:image/png;base64,'+image}"  src=""/>
-        <div class="description">
-            <td th:text="${randomSummerCamps.description}"></td>
+<tr th:each="randomSummerCamp:${randomSummerCamps}">
+    <div class="header">
+        <h1>We found a trip that suits you</h1>
+        <h1 th:text="${randomSummerCamp.title}"></h1>
+        <h1 th:text="${randomSummerCamp.state}"></h1>
+    </div>
+    <div class="content">
+        <div>
+            <p th:text="${randomSummerCamp.description}"></p>
         </div>
-        <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
-            again!
-        </button>
+        <div>
+            <img alt="" th:src="*{'data:image/jpeg;base64,'+{randomSummerCamp.image}}" src="">
+            <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
+                again!
+            </button>
+            <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Save
+            </button>
+            <div class="main">
 
-        <form method="POST" action="/photos/add" enctype="multipart/form-data">
-            Image:<input type="file" name="image" accept="image/*" />
-            <input type="submit" value="Upload" />
-        </form>
+                <div class="signup">
+                    <form
+                            method="get"
+                            role="form"
+                            th:action="@{/api/user/saveHoliday}"
+                    >
+                        <button>Save doc</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </tr>
-
-
 </body>
 </html>

@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tripAdvisorHomePage.css}"/>
+    <title>asf</title>
 </head>
 <body>
-
 <div class="header">
     <h1>Hi, welcome to Trip Advisor</h1>
     <p>We will find a trip that suit you.</p>
+</div>
+
+
+<div class="main">
+
+    <div class="signup">
+        <form
+                method="post"
+                role="form"
+                th:action="@{/api/auth/signout}"
+        >
+            <button>Logout</button>
+        </form>
+    </div>
 </div>
 
 <div class="row">

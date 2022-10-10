@@ -1,4 +1,4 @@
-/*Inserting main variables*/
+
 
 const adventureHolidays = document.getElementById("adventureHolidays");
 const backpacking = document.getElementById("backpacking");
