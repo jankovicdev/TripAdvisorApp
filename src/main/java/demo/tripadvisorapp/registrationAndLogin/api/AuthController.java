@@ -54,7 +54,7 @@ public class AuthController {
 
         return ResponseEntity
                 .status(HttpStatus.FOUND)
-                .location(URI.create("/api/users/tripAdvisorHomePage"))
+                .location(URI.create("/api/user/tripAdvisorHomePage"))
                 .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .build();
 

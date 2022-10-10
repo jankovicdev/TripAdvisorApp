@@ -1,34 +1,52 @@
 package demo.tripadvisorapp.registrationAndLogin.api;
 
+
+import demo.tripadvisorapp.models.AdventureHolidays;
 import demo.tripadvisorapp.registrationAndLogin.model.User;
 import demo.tripadvisorapp.registrationAndLogin.repository.UserRepository;
+import demo.tripadvisorapp.registrationAndLogin.service.UserService;
+import demo.tripadvisorapp.repository.AdventureHolidaysRepository;
+import demo.tripadvisorapp.services.AdventureHolidaysService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class UserController {
+
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/me")
-    public ResponseEntity<?> me(@AuthenticationPrincipal User user) {
-        return ResponseEntity.ok(user);
-    }
+    @Autowired
+    AdventureHolidaysRepository adventureHolidaysRepository;
 
-    @GetMapping("/{id}")
-    @PreAuthorize("#user.id == #id")
-    public ResponseEntity<?> me(@AuthenticationPrincipal User user, @PathVariable String id) {
-        return ResponseEntity.ok(userRepository.findById(id));
-    }
+    @Autowired
+    AdventureHolidaysService adventureHolidaysService;
+
+    @Autowired
+    UserService userService;
+
     @GetMapping("/tripAdvisorHomePage")
     public String index() {
         return "tripAdvisorHomePage";
     }
+
+    @GetMapping("/profile")
+    public String userProfile() {
+        return "userProfile";
+    }
+
+    @GetMapping(path = "/saveHoliday/{id}")
+    public ResponseEntity<Void> saveLink(@PathVariable("id") String id, String holidayId) {
+        userService.saveDocument(id, holidayId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
+
+
