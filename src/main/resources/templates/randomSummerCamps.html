@@ -25,6 +25,18 @@
             </button>
             <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Save
             </button>
+            <div class="main">
+
+                <div class="signup">
+                    <form
+                            method="get"
+                            role="form"
+                            th:action="@{/api/user/saveHoliday}"
+                    >
+                        <button>Save doc</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </tr>

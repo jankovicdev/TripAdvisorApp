@@ -1,10 +1,15 @@
 package demo.tripadvisorapp.registrationAndLogin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import demo.tripadvisorapp.models.AdventureHolidays;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+import java.util.Optional;
 
 @Document
 public class User {
@@ -19,6 +24,9 @@ public class User {
     @JsonIgnore
     @NonNull
     private String password;
+
+    @DBRef
+    private List<AdventureHolidays> adventureHolidaysList;
 
     public User() {
     }
@@ -59,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<AdventureHolidays> getAdventureHolidaysList() {
+        return adventureHolidaysList;
+    }
+
+    public void setAdventureHolidaysList(List<AdventureHolidays> adventureHolidaysList) {
+        this.adventureHolidaysList = adventureHolidaysList;
     }
 }

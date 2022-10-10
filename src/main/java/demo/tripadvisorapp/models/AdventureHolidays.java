@@ -15,6 +15,16 @@ public class AdventureHolidays {
     private String typeOfAdventureHolidays;
     private String image;
 
+    private String userSavedId;
+
+    public String getUserSavedId() {
+        return userSavedId;
+    }
+
+    public void setUserSavedId(String userSavedId) {
+        this.userSavedId = userSavedId;
+    }
+
     public String getId() {
         return id;
     }
