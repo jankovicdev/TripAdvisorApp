@@ -1,7 +1,7 @@
 package demo.tripadvisorapp.registrationAndLogin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import demo.tripadvisorapp.models.AdventureHolidays;
+import demo.tripadvisorapp.trips.models.AdventureHolidays;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-import java.util.Optional;
 
 @Document
 public class User {
