@@ -27,7 +27,7 @@
             </button>
         </div>
     </div>
-    <form role="form" th:action="@{/api/userProfile/savedAdventureHolidays} + '/'+ ${postIds} + '/post'"
+    <form role="form" th:action="@{/api/userProfile/savedAdventureHolidays} + '/'+ ${randomSummerCamp.id} + '/post'"
           th:method="post">
         <button id="login" class="btn btn-lg btn-success btn-block" type="submit">Login</button>
 
