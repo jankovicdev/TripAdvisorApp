@@ -20,7 +20,7 @@ public class UserProfile {
 
     private String loggedUserId;
 
-    private String email;
+    private String savedHolidayTitle;
 
     @DBRef
     private List<AdventureHolidays> adventureHolidaysList = new ArrayList<>();

@@ -8,21 +8,28 @@
 
 </head>
 <body>
-<tr th:each="randomTrekkings:${randomTrekkings}">
-    <div class="title">
-        <h1>We think this trip best suit you.</h1>
-        <h1 th:text="${randomTrekkings.title}"></h1>
-        <h1 th:text="${randomTrekkings.state}"></h1>
-        <div class="description">
-            <td th:text="${randomTrekkings.description}"></td>
-        </div>
-        <img alt="" th:src="*{'data:image/jpeg;base64,'+{randomTrekkings.image}}" style="align-content: center">
-        <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomTrekking'">Randomize
-            again!
-        </button>
+<tr th:each="randomTrekking:${randomTrekkings}">
+    <div class="header">
+        <h1>We found a trip that suits you</h1>
+        <h1 th:text="${randomTrekking.title}"></h1>
+        <h1 th:text="${randomTrekking.state}"></h1>
     </div>
+    <div class="content">
+        <div>
+            <p th:text="${randomTrekking.description}"></p>
+        </div>
+        <div>
+            <img alt="" th:src="*{'data:image/jpeg;base64,'+{randomTrekking.image}}" src="">
+            <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomTrekkings'">Randomize
+                again!
+            </button>
+            <form role="form" th:action="@{/api/userProfile/savedAdventureHolidays} + '/post/'+ ${randomTrekking.id}"
+                  th:method="post">
+                <button id="login" class="btn btn-lg btn-success btn-block" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
 </tr>
-
-
 </body>
 </html>

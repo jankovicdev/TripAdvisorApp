@@ -37,24 +37,25 @@ public class UserProfileController {
     UserRepository userRepository;
 
 
-    @PostMapping("/savedAdventureHolidays/post/{postId}")
-    public UserProfile createComment(@PathVariable(value = "postId") String postId,
-                                     Model model) {
+    @PostMapping("/savedAdventureHolidays/post/{adventureHolidayId}")
+    public String saveAdventureHolidayElement(@PathVariable(value = "adventureHolidayId") String adventureHolidayId,
+                                              Model model) {
 
         UserProfile comment = new UserProfile();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
-        return adventureHolidaysRepository.findById(postId).map(post -> {
+        return adventureHolidaysRepository.findById(adventureHolidayId).map(post -> {
             comment.setAdventureHolidaysList(Collections.singletonList(post));
             comment.setLoggedUserId(username);
+            comment.setSavedHolidayTitle(adventureHolidaysRepository.findById(adventureHolidayId).get().getTitle());
             model.addAttribute("comment", comment);
-            return userProfileRepository.save(comment);
-        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+            userProfileRepository.save(comment);
+            return "redirect:/adventureHolidays/randomSummerCamps";
+        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + adventureHolidayId + " not found"));
 
     }
-
 
 
 }

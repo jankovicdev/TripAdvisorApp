@@ -23,15 +23,13 @@
             <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Randomize
                 again!
             </button>
-            <button type="button" onclick="document.location.href = '/adventureHolidays/getRandomSummerCamps'">Save
-            </button>
+            <form role="form" th:action="@{/api/userProfile/savedAdventureHolidays} + '/post/'+ ${randomSummerCamp.id}"
+                  th:method="post">
+                <button id="login" class="btn btn-lg btn-success btn-block" type="submit">Save</button>
+            </form>
         </div>
     </div>
-    <form role="form" th:action="@{/api/userProfile/savedAdventureHolidays} + '/post/'+ ${randomSummerCamp.id}"
-          th:method="post">
-        <button id="login" class="btn btn-lg btn-success btn-block" type="submit">Login</button>
 
-    </form>
 </tr>
 </body>
 </html>

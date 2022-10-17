@@ -21,6 +21,13 @@ public class AdventureHolidaysAPI {
     AtomicInteger countSummerCamps = new AtomicInteger();
     AtomicInteger countTrekkings = new AtomicInteger();
 
+    @GetMapping("/randomSummerCamps")
+    public String randomSummerCamps(Model model) {
+        model.addAttribute("randomSummerCamps", adventureHolidaysService.findRandomAdventureHolidays("summerCamps"));
+
+        return "randomSummerCamps";
+    }
+
     @GetMapping("/getRandomSummerCamps")
     public String getRandomSummerCamps(Model model) {
         countSummerCamps.incrementAndGet();
@@ -49,8 +56,7 @@ public class AdventureHolidaysAPI {
     }
 
     @PostMapping("/photos/add")
-    public String addPhoto(@RequestParam("file") MultipartFile file)
-            throws IOException {
+    public String addPhoto(@RequestParam("file") MultipartFile file) throws IOException {
         return adventureHolidaysService.saveImage(file);
     }
 
