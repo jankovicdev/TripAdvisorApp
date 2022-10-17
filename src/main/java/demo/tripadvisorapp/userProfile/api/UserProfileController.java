@@ -52,7 +52,9 @@ public class UserProfileController {
             model.addAttribute("comment", comment);
             return userProfileRepository.save(comment);
         }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+
     }
+
 
 
 }
