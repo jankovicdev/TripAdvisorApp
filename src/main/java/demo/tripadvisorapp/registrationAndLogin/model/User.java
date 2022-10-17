@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -25,7 +26,8 @@ public class User {
     private String password;
 
     @DBRef
-    private List<AdventureHolidays> adventureHolidaysList;
+    private List<AdventureHolidays> adventureHolidaysList = new ArrayList<>();
+
 
     public User() {
     }
@@ -70,9 +72,5 @@ public class User {
 
     public List<AdventureHolidays> getAdventureHolidaysList() {
         return adventureHolidaysList;
-    }
-
-    public void setAdventureHolidaysList(List<AdventureHolidays> adventureHolidaysList) {
-        this.adventureHolidaysList = adventureHolidaysList;
     }
 }
